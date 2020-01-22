@@ -1,0 +1,100 @@
+﻿    
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - My Flask Application</title>
+    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <script src="/static/scripts/modernizr-2.6.2.js"></script>
+</head>
+<style>
+    * {
+        box-sizing: border-box
+    }
+
+    /* Set height of body and the document to 100% */
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial;
+    }
+
+    /* Style tab links */
+    .tablink {
+        background-color: #555;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 25%;
+    }
+
+        .tablink:hover {
+            background-color: #777;
+        }
+
+    /* Style the tab content (and add height:100% for full page content) */
+    .tabcontent {
+        color: white;
+        display: none;
+        padding: 100px 20px;
+        height: 100%;
+    }
+
+    #Home {
+        background-color: #92a8d1;
+    }
+
+    #News {
+        background-color: #92a8d1;
+    }
+
+    #Contact {
+        background-color: #92a8d1;
+    }
+
+    #About {
+        background-color: #92a8d1;
+    }
+</style>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+
+               
+               
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('home') }}"><button class="tablink" onclick="openPage('Home', this, 'red')">Home</button></a></li>
+                    <li><a href="{{ url_for('about') }}"><button class="tablink" onclick="openPage('About', this, 'green')" id="defaultOpen">About</button></a></li>
+                    <li><a href="{{ url_for('contact') }}"><button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button></a></li>
+                    <li><a href="{{ url_for('photos') }}"><button class="tablink" onclick="openPage('Photos', this, 'orange')">Photos</button></a></li>
+                    <li><a href="{{ url_for('query') }}"><button class="tablink" onclick="openPage('Query', this, 'orange')">Query</button></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        {% block content %}{% endblock %}
+        <hr />
+        <footer>
+            <p>&copy; {{ year }} - My Flask Application</p>
+        </footer>
+    </div>
+
+    <script src="/static/scripts/jquery-1.10.2.js"></script>
+    <script src="/static/scripts/bootstrap.js"></script>
+    <script src="/static/scripts/respond.js"></script>
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>
